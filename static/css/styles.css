@@ -1,0 +1,41 @@
+#main-navigation h2{
+	font-family: 'Raleway', sans-serif;
+    color: rgb(0,100,0);
+    text-align: center;
+}
+
+.coin{
+  position:absolute;
+  z-index:-1;
+  top:-55px;
+  left:14px;
+  width:46px;
+  height:46px;
+  border-radius:46px;
+  transition:all .3s;
+}
+
+.coin.red{
+  background:#d96666;
+}
+
+.coin.yellow{
+  background:#ffeb79;
+}
+
+table#board {
+  margin-left: 400px;
+  width:550px;
+  height:550px;
+  background-color: #27ae60;
+}
+
+table#board button.btn {
+  border-radius:46px;
+  border: 1px solid black;
+  width:75px;
+  height:75px;
+  margin-left: 2px;
+  background-color: #ecf0f1;
+  outline-style: none;
+}

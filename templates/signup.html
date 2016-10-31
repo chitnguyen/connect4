@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+{#    <div class="row">#}
+{#        <div class="col-md-5 col-md-5 ">#}
+{#            <div class="login-panel panel panel-default">#}
+{#                <div class="panel-heading">#}
+{#                    <h3 class="panel-title">Sign Up</h3>#}
+{#                </div>#}
+{#                <div class="panel-body">#}
+{#                    <form method="post" action=".">#}
+{#{% csrf_token %}#}
+{#                        <p class="bs-component">#}
+{#                            <table>#}
+{#                                <tr>#}
+{#                                    <td>{{ form.username.label_tag }}</td>#}
+{#                                    <td>{{ form.username }}</td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td>{{ form.password.label_tag }}</td>#}
+{#                                    <td>{{ form.password }}</td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td>{{ form.password.label_tag }}</td>#}
+{#                                    <td>{{ form.password }}</td>#}
+{#                                </tr>#}
+{#                            </table>#}
+{#                        </p>#}
+{#                        <p class="bs-component">#}
+{#                            <center>#}
+{#                                <input class="btn btn-success btn-sm" type="submit" value="Sign Up" />#}
+{#                            </center>#}
+{#                        </p>#}
+{#                        <input type="hidden" name="next" value="{{ next }}" />#}
+{#                    </form>#}
+                    <form action="." method="post" > {% csrf_token %}
+                        <table border="0">
+                            {{ form.as_table }}
+                        </table>
+                        <input type="submit" value="Sign Up"/>
+                    </form>
+{#                </div>#}
+{#            </div>#}
+{#    </div>#}
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+<script>
+    {% if not user.is_authenticated %}
+    $("ul.nav.navbar-nav.navbar-right").css("display","none");
+    {% endif %}
+</script>
+
+{% endblock %}

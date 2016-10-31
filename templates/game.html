@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <p class="bs-component">
+            <center>
+                <p>Welcome <b>{{ request.user.username }}</b></p>
+                <input class="btn btn-success btn-sm" onclick="location.href = '/connect4/logout/';"type="submit" value="Log Out" />
+            </center>
+        </p>
+    {% else %}
+        <p class="bs-component">
+            <center>
+                <p>Please login to see this page.</p>
+                <input class="btn btn-success btn-sm" onclick="location.href = '/connect4/login/';"type="submit" value="Log In" />
+            </center>
+        </p>
+    {% endif %}
+    <form method="post" action=".">
+    {% csrf_token %}
+        <center>
+            <p class="bs-component">
+                <input class="btn btn-success btn-sm" type="submit" value="Create Game" />
+            </p>
+        </center>
+    </form>
+    <center>
+        <div class="col-md-3">
+            <h3>Your created games: </h3>
+                {% for game in allMyCreatedGames %}
+                <p> created by {{ game.player1.username }} at {{ game.created_date }}</p>
+                {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>Open games: </h3>
+                {% for game in allOpenGames %}
+                <a href = '/connect4/play/{{game.id}}/'>created by {{ game.player1.username }} at {{ game.created_date }}</a>
+                {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>Playing games: </h3>
+                {% for game in allPlayingGames %}
+                <a href = '/connect4/play/{{game.id}}/'>created by {{ game.player1.username }} at {{ game.created_date }}</a>
+                {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>Concluded games: </h3>
+                {% for game in allConcludedGames %}
+                <a href = '/connect4/play/{{game.id}}/'>created by {{ game.player1.username }} at {{ game.created_date }}</a>
+                {% endfor %}
+        </div>
+    </center>
+{% endblock %}
+
+{% block javascript %}
+
+
+<script>
+    {% if not request.user.is_authenticated %}
+    $("ul.nav.navbar-nav.navbar-right").css("display","none");
+    {% endif %}
+</script>
+
+{% endblock %}
