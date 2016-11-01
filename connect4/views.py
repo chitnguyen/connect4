@@ -25,20 +25,22 @@ def login(request):
     :return:
     """
     if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            return HttpResponseRedirect(request.GET.get('next',
-                                        settings.LOGIN_REDIRECT_URL))
-        else:
-            return HttpResponse('Invalid. Please try again ')
+        if form.is_valid():
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return HttpResponseRedirect('/connect4/games/')
+    else:
+        form = AuthenticationForm()
+
     args = {}
     args.update(csrf(request))
-    username = password = ''
-    args['form'] = AuthenticationForm()
-    return render_to_response('login.html', args, context_instance=RequestContext(request))
+    args['form'] = form
+    return render_to_response('login.html', args)
+
 
 def logout(request):
     """
@@ -49,29 +51,25 @@ def logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/connect4/login/')
 
+
 def signup(request):
     """
     write your user sign up view here
     :param request:
     :return:
     """
+    if request.method == 'POST':
+        form = UserCreationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/connect4/login/')
+    else:
+        form = UserCreationForm()
+
     args = {}
     args.update(csrf(request))
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        # if form.is_valid():
-        #     form.save()
-        #     return HttpResponse('Sucessfully Signed Up')
-        username = request.POST.get('username');
-        password = request.POST.get('password1')
-        user = User.objects.create_user(username=username, password=password)
-        user.save()
-        return HttpResponseRedirect('/connect4/login/')
-    else:
-        # return HttpResponse('Username already exists or password does not match')
-        form = UserCreationForm()
-        args['form'] = form
-    return render_to_response('signup.html', args, context_instance=RequestContext(request))
+    args['form'] = form
+    return render_to_response('signup.html', args)
 
 
 @login_required(login_url='/connect4/login/')

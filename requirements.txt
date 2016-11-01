@@ -3,3 +3,7 @@ Django==1.9.4
 gunicorn==19.4.5
 whitenoise==2.0.6
 psycopg2==2.6.1
+channels==0.9.3
+daphne==0.9.1
+asgi-redis==0.8.3
+redis==2.10.5

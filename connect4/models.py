@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 
+
 # Create your models here.
 
 @python_2_unicode_compatible
@@ -14,13 +15,12 @@ class Game(models.Model):
     winner = models.CharField(max_length=10)
     created_date = models.DateTimeField(default=timezone.now)
 
-
     def __str__(self):
         if self.player2:
             return ' vs '.join([self.player1.get_full_name(), self.player2.get_full_name()])
 
         else:
-            return 'Join now to play %s'%self.player1.get_short_name()
+            return 'Join now to play %s' % self.player1.get_short_name()
 
     @property
     def start_date(self):
@@ -45,13 +45,13 @@ class Game(models.Model):
 
     def make_move(self, player, row, column):
         try:
-             self.coin_set.create(game=self, player=player, row=row, column=column)
-             if len(self.coin_set.all()) == 42:
-                 self.status = 'Concluded'
-                 self.winner = 'Draw'
-                 self.save()
+            self.coin_set.create(game=self, player=player, row=row, column=column)
+            if len(self.coin_set.all()) == 42:
+                self.status = 'Concluded'
+                self.winner = 'Draw'
+                self.save()
         except:
-             return False
+            return False
 
         return True
 

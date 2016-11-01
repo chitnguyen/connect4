@@ -2,72 +2,69 @@
 
 
 {% block content %}
+    {# Show messages if form is not valid #}
     {% if form.errors %}
-
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
-{% if next %}
-    {% if request.user.is_authenticated %}
-
-<p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-
-<p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4 ">
-            <div class="login-panel panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Please Sign In</h3>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
                 </div>
-                <div class="panel-body">
-                    <form method="post" action=".">
-                        {% csrf_token %}
-                        <p class="bs-component">
-                            <table>
-                                <tr>
-                                    <td>{{ form.username.label_tag }}</td>
-                                    <td>{{ form.username }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ form.password.label_tag }}</td>
-                                    <td>{{ form.password }}</td>
-                                </tr>
-                            </table>
-                        </p>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 ">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading" style="background-color: #c0392b;">
+                        <center class="panel-title" style="color:white; font-family: 'Raleway', sans-serif;">
+                            Please Sign In To Play</center>
+                    </div>
+                    <div class="panel-body" style="background-color: #bdc3c7;">
+                        <form method="post" action=".">{% csrf_token %}
+                            <p class="bs-component">
+                                <table>
+                                    <tr>
+                                        <td style="margin: 5px 5px 5px 5px; padding: 5px 5px 5px 5px;">{{ form.username.label_tag }}</td>
+                                        <td id="log-in-form">{{ form.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="margin: 5px 5px 5px 5px; padding: 5px 5px 5px 5px;">{{ form.password.label_tag }}</td>
+                                        <td id="log-in-form">{{ form.password }}</td>
+                                    </tr>
+                                </table>
+                            </p>
+                            <p class="bs-component">
+                                <center>
+                                    <input class="btn btn-success btn-md" type="submit" value="Log In" />
+                                </center>
+                            </p>
+                            <input type="hidden" name="next" value="{{ next }}" />
+                        </form>
                         <p class="bs-component">
                             <center>
-                                <input class="btn btn-success btn-sm" type="submit" value="Login" />
+                                <input class="btn btn-primary btn-md" onclick="location.href = '/connect4/signup/';"type="submit" value="Sign Up Now" />
                             </center>
                         </p>
                         <input type="hidden" name="next" value="{{ next }}" />
-                    </form>
-                    <p class="bs-component">
-                        <center>
-                            <input class="btn btn-success btn-sm" onclick="location.href = '/connect4/signup/';"type="submit" value="Or Sign Up" />
-                        </center>
-                    </p>
-                    <input type="hidden" name="next" value="{{ next }}" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 {% endblock %}
 
 {% block javascript %}
-
-
-<script>
-    {% if not user.is_authenticated %}
-    $("ul.nav.navbar-nav.navbar-right").css("display","none");
-    {% endif %}
-</script>
-
+     <script>
+        {% if not request.user.is_authenticated %}
+            $("#create-game-btn").hide();
+            $("#user-account").hide();
+        {% endif %}
+    </script>
 {% endblock %}

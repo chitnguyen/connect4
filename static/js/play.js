@@ -2,12 +2,6 @@
  * Created by Chinguyen on 28/10/2016.
  */
 var gameField = new Array();
-//var board = document.getElementById("game-table");
-//var board = prepareBoard();
-//var currentCol;
-//var currentRow;
-//var currentPlayer;
-//var id = 1;
 
 function checkForVictory(player, row, col){
       gameField[row][col] = player;
@@ -48,23 +42,22 @@ function cellVal(row, col){
 
 function firstFreeRow(col){
   for(var i = 0; i<6; i++){
-    if(gameField[i][col]!=0){
-      break;
-    }
+      if(gameField[i][col]!=0){
+          break;
+      }
   }
   return i-1;
 }
 
-
 //create a 6x7 board with 0 entries
 function prepareField() {
-  gameField = new Array();
-  for(var i=0; i<6; i++) {
-    gameField[i] = new Array();
-    for(var j=0; j<7; j++){
-      gameField[i].push(0);
+    gameField = new Array();
+    for(var i=0; i<6; i++) {
+        gameField[i] = new Array();
+        for(var j=0; j<7; j++){
+            gameField[i].push(0);
+        }
     }
-  }
 }
 
 // Filling the board with all the moves

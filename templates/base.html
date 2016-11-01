@@ -5,24 +5,48 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Connect 4 Account</title>
+        <title>Play Connect 4 Online</title>
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
         <script src = "{% static 'js/jquery.min.js' %}"></script>
         <!-- Custom CSS -->
 		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
     </head>
         <body>
-            <nav class="navbar navbar-default" id="main-navigation">
+            <div class="navbar navbar-default" id="main-navigation">
                 <div class="container-fluid">
-                    <h2> Play Connect 4 Online</h2>
+                    <h2 class="navbar-header" href="#">Play Connect 4 Online</h2>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <ul class="nav nav-pills">
+                                <li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-account">
+                                    {{ request.user.username }} <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Settings</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href = '/connect4/logout/'>Log Out</a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                        </ul>
+                        <form method="post" action=".">
+                        {% csrf_token %}
+                            <center>
+                                <p class="bs-component">
+                                    <input class="btn btn-success btn-sm" id="create-game-btn" type="submit" value="Create Game" />
+                                </p>
+                            </center>
+                        </form>
+                    </div>
                 </div>
-            </nav>
+            </div>
             {% block content %}{% endblock %}
 
             <!-- Core Scripts - Include with every page -->
-
             <script src = "{% static 'js/bootstrap.min.js' %}"></script>
             <script src = "{% static 'js/play.js' %}"></script>
-            {% block javascript %}{% endblock %}
+            {% block javascript %}
+            {% endblock %}
         </body>
 </html>
