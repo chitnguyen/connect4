@@ -5,6 +5,7 @@ import models
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django import forms
@@ -54,17 +55,23 @@ def signup(request):
     :param request:
     :return:
     """
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponse('Sucessfully Signed Up')
-        else:
-            return HttpResponse('Username already exists or password does not match')
     args = {}
     args.update(csrf(request))
-    args['form'] = UserCreationForm()
-    return render_to_response('signup.html', args)
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        # if form.is_valid():
+        #     form.save()
+        #     return HttpResponse('Sucessfully Signed Up')
+        username = request.POST.get('username');
+        password = request.POST.get('password1')
+        user = User.objects.create_user(username=username, password=password)
+        user.save()
+        return HttpResponseRedirect('/connect4/login/')
+    else:
+        # return HttpResponse('Username already exists or password does not match')
+        form = UserCreationForm()
+        args['form'] = form
+    return render_to_response('signup.html', args, context_instance=RequestContext(request))
 
 
 @login_required(login_url='/connect4/login/')
