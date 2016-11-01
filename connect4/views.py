@@ -131,5 +131,5 @@ def play(request, game_id):
     args['player_turns'] = [coin.player_id for coin in game.coin_set.all()]
     args['rows'] = [coin.row for coin in game.coin_set.all()]
     args['cols'] = [coin.column for coin in game.coin_set.all()]
-    args['last_move'] = game.last_move
+    args['last_move'] = game.last_move if len(game.coin_set.all()) else None
     return render_to_response('play.html', args, context_instance=RequestContext(request))

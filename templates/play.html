@@ -118,12 +118,13 @@
             var current_player = {{ request.user.id }};
             var first_player = {{ game.player1.id }};
             var colour = (current_player == first_player)? 'red' : 'yellow';
-            var last_move_row = {{ last_move.row }};
-            var last_move_col = {{ last_move.column }};
-            var id = "btn"+last_move_row+last_move_col;
-            var last_move = document.getElementById(id);
-            last_move.style.cssText += 'border: 5px solid #2c3e50';
-
+            {% if last_move %}
+                var last_move_row = {{ last_move.row }};
+                var last_move_col = {{ last_move.column }};
+                var id = "btn" + last_move_row + last_move_col;
+                var last_move = document.getElementById(id);
+                last_move.style.cssText += 'border: 5px solid #2c3e50';
+            {% endif %}
             prepareField();
             updateCurrentField(players, rows, cols, first_player);
 
