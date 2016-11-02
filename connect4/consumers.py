@@ -3,6 +3,7 @@ import logging
 from channels import Group
 from channels.sessions import channel_session
 from .models import Game
+from django.contrib.auth.models import User
 
 log = logging.getLogger(__name__)
 
@@ -35,7 +36,25 @@ def ws_receive(message):
         log.debug('chat message game=%s row=%s col=%s',
                   game_id, data['row'], data['col'])
         # using game below to write message to db here
+        # if game.status == 'Concluded':
+        #     return HttpResponseBadRequest('Game already finished!')
+        # elif game.status == 'Playing' and request.user.id not in [game.player1_id, game.player2_id]:
+        #     return HttpResponseBadRequest("Only current players are allowed to make the move")
+        # elif not game.coin_set.all() or game.last_move.player != request.user:
+        #     status = request.POST.get('status', 'Open')
+        row = data['row']
+        col = data['col']
+        status = data['status']
+        current_player = User.objects.get(id=data['current_player'])
+        game.make_move(current_player, row, col)
+        if status == 'Concluded':
+            game.status = 'Concluded'
+            game.winner = current_player.username
+            game.save()
+        # else:
+        #     return HttpResponseBadRequest("Can not make 2 moves in a row")
 
+        data['winner'] = game.winner
         # See above for the note about Group
         Group('game-'+game_id, channel_layer=message.channel_layer).send({'text': json.dumps(data)})
 

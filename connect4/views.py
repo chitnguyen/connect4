@@ -4,7 +4,6 @@ import models
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django import forms
@@ -107,22 +106,6 @@ def play(request, game_id):
     game = Game.objects.get(id=game_id)
     if game.player1 != request.user:
         game.join_up(request.user)
-    if request.method == 'POST':
-        if game.status == 'Concluded':
-            return HttpResponseBadRequest('Game already finished!')
-        elif game.status == 'Playing' and request.user.id not in [game.player1_id, game.player2_id]:
-            return HttpResponseBadRequest("Only current players are allowed to make the move")
-        elif not game.coin_set.all() or game.last_move.player != request.user:
-            status = request.POST.get('status', 'Open')
-            row = request.POST.get('row')
-            col = request.POST.get('column')
-            game.make_move(request.user, row, col)
-            if status == 'Concluded':
-                game.status = 'Concluded'
-                game.winner = request.user.username
-                game.save()
-        else:
-            return HttpResponseBadRequest("Can not make 2 moves in a row")
 
     coin_set = game.coin_set
     player_turns = [coin.player_id for coin in game.coin_set.all()]

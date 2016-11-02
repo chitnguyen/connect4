@@ -35,12 +35,13 @@
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
             var play_socket = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + window.location.pathname);
             var current_player = {{ request.user.id }};
+            var current_player_name = {{ request.user.username }};
             var player1 = {{ game.player1.id }};
+            var player1 = {{ game.player2.id }};
             var players = {{ player_turns }};
             var rows = {{ rows }};
             var cols = {{ cols }};
             var status = $("#status").val();
-            var winner = ''
             {% if last_move %}
                 var last_move_row = {{ last_move.row }};
                 var last_move_col = {{ last_move.column }};
@@ -56,7 +57,17 @@
                 var col = last_move.col;
                 var status = last_move.status;
                 var winner = last_move.winner;
-                placeCoin(current_player, row, col, player1);
+                placeCoin(current_player, row, col, player1)
+                if (winner != 'Draw'){
+                    if(winner == current_player_name){
+                        alert('You Win!');
+                    } else {
+                        alert('You lose!');
+                    }
+                } else {
+                    alert('Draw Game!')
+                };
+
 {#                window.location.reload(true);#}
             };
 
@@ -81,41 +92,42 @@
 
             $("#board tr td button").click(function(e) {
                     e.preventDefault();
-                    if (status!='Concluded'){
-                        var col = $(this).data("col");
-                        var row = firstFreeRow(col);
-                        if (row == -1) {
-                            alert('You cannot put more coin in this column!');
+                    var winner = '';
+                    if (current_player == player1 || current_player == player2) {
+                        if (status != 'Concluded') {
+                            var col = $(this).data("col");
+                            var row = firstFreeRow(col);
+                            if (row == -1) {
+                                alert('You cannot put more coin in this column!');
+                            } else {
+                                if (checkForVictory(current_player, row, col)) {
+                                    //alert('You win!');
+                                    status = "Concluded";
+                                }
+
+                                var message = {
+                                    row: row,
+                                    col: col,
+                                    status: status,
+                                    winner: winner,
+                                    current_player: current_player
+                                };
+                                play_socket.send(JSON.stringify(message));
+
+                                //alert('Posting coin move to server!');
+                                {#                            $.post("/connect4/play/{{ game.id }}/", {row: row, column: col, status: status})#}
+                                {#                                    .done(function (data) {#}
+                                {#                                        window.location.reload(true);#}
+                                {#                                    })#}
+                                {#                                    .fail(function (xhr, status, error) {#}
+                                {#                                        alert(xhr.responseText);#}
+                                {#                                    });#}
+                            }
                         } else {
-                            var id = "btn"+row+col;
-                            var button = document.getElementById(id);
-                            if (checkForVictory(current_player, row, col)) {
-                                alert('You win!');
-                                status = "Concluded";
-                                winner = current_player;
-                            }
-
-                            var message = {
-                                row: row,
-                                col: col,
-                                status: status,
-                                winner: winner
-                            }
-                            play_socket.send(JSON.stringify(message));
-
-                            //alert('Posting coin move to server!');
-                            $.post("/connect4/play/{{ game.id }}/", {row: row, column: col, status: status})
-                                    .done(function (data) {
-                                        window.location.reload(true);
-                                    })
-                                    .fail(function (xhr, status, error) {
-                                        alert(xhr.responseText);
-                                    });
-                        }
-                    } else {
-                        alert('Game already finished!');
+                            alert('Game already finished!');
+                        };
                     }
-                });
+            });
 
 {#            Wire up a callback to fire when new data is received on the Websocket#}
 {#            play_socket.onmessage = function(coin) {#}
