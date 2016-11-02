@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response
-from django.shortcuts import get_object_or_404, get_list_or_404
+from django.shortcuts import render, redirect, render_to_response, get_object_or_404, get_list_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse, HttpResponseBadRequest
 import models
 from django.contrib.auth import authenticate
@@ -84,16 +83,18 @@ def games(request):
         player1 = request.user
         game = Game(player1=player1)
         game.save()
-    args = {}
-    args.update(csrf(request))
 
-    args['allMyCreatedGames'] = Game.objects.all().filter(status='Open', player1=request.user)
-    args['allOpenGames'] = Game.objects.all().filter(status='Open').exclude(player1=request.user)
-    args['allPlayingGames'] = Game.objects.all().filter(Q(status='Playing'),
-                                                        Q(player1=request.user) | Q(player2=request.user))
-    args['allConcludedGames'] = Game.objects.all().filter(Q(status='Concluded'),
-                                                          Q(player1=request.user) | Q(player2=request.user))
-    return render_to_response('game.html', args, context_instance=RequestContext(request))
+    my_created_games = Game.objects.all().filter(status='Open', player1=request.user)
+    open_games = Game.objects.all().filter(status='Open').exclude(player1=request.user)
+    playing_games = Game.objects.all().filter(Q(status='Playing'),
+                                              Q(player1=request.user) | Q(player2=request.user))
+    concluded_games = Game.objects.all().filter(Q(status='Concluded'),
+                                                Q(player1=request.user) | Q(player2=request.user))
+    context = {'my_created_games': my_created_games,
+               'open_games': open_games,
+               'playing_games': playing_games,
+               'concluded_games': concluded_games}
+    return render(request, 'game.html', context)
 
 
 @login_required(login_url='/connect4/login/')
@@ -122,12 +123,18 @@ def play(request, game_id):
                 game.save()
         else:
             return HttpResponseBadRequest("Can not make 2 moves in a row")
-    args = {}
-    args.update(csrf(request))
-    args['game'] = game
-    args['coin_set'] = game.coin_set
-    args['player_turns'] = [coin.player_id for coin in game.coin_set.all()]
-    args['rows'] = [coin.row for coin in game.coin_set.all()]
-    args['cols'] = [coin.column for coin in game.coin_set.all()]
-    args['last_move'] = game.last_move if len(game.coin_set.all()) else None
-    return render_to_response('play.html', args, context_instance=RequestContext(request))
+
+    coin_set = game.coin_set
+    player_turns = [coin.player_id for coin in game.coin_set.all()]
+    rows = [coin.row for coin in game.coin_set.all()]
+    cols = [coin.column for coin in game.coin_set.all()]
+    last_move = game.last_move if len(game.coin_set.all()) else None
+    context = {
+        'game': game,
+        'coin_set': coin_set,
+        'player_turns': player_turns,
+        'rows': rows,
+        'cols': cols,
+        'last_move': last_move
+    }
+    return render(request, 'play.html', context)

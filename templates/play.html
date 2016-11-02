@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
     {% if request.user.is_authenticated %}
@@ -23,33 +24,24 @@
                 <input type="hidden" id="status" name="status" value="{{ game.status }}">
         </div>
     </div>
-
-{#    Script to Genereate 6x7 board #}
-    <script type="text/javascript">
-        var table = document.createElement("table");
-        table.setAttribute('id', 'board')
-        for (var i= 0; i<6; i++) {
-            var tr = document.createElement('tr');
-            for (var j = 0; j < 7; j++){
-                var td = document.createElement('td');
-                var button = document.createElement('button');
-                button.setAttribute('class', 'btn');
-                button.setAttribute('id', 'btn'+String(i)+String(j));
-                button.setAttribute('data-row', String(i));
-                button.setAttribute('data-col', String(j));
-                td.appendChild(button);
-                tr.appendChild(td)
-            }
-            table.appendChild(tr)
-        }
-        document.body.appendChild(table);
-    </script>
+    <script src = "{% static 'js/play.js' %}"></script>
 
     <div id="board">
     </div>
 
     <script type="text/javascript">
         $(document).ready(function() {
+        {#        Create a websocket#}
+            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            var play_socket = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + window.location.pathname);
+            play_socket.onmessage = function(message) {
+                var last_move = JSON.parse(message.data);
+                var row = last_move.row;
+                var col = last_move.col;
+                var status = last_move.status;
+                var winner = last_move.winner;
+                alert('New move');
+            }
             var players = {{ player_turns }};
             var rows = {{ rows }};
             var cols = {{ cols }};
@@ -57,6 +49,7 @@
             var current_player = {{ request.user.id }};
             var first_player = {{ game.player1.id }};
             var colour = (current_player == first_player)? 'red' : 'yellow';
+            var winner = ''
             {% if last_move %}
                 var last_move_row = {{ last_move.row }};
                 var last_move_col = {{ last_move.column }};
@@ -90,19 +83,26 @@
                     e.preventDefault();
                     if (status!='Concluded'){
                         var col = $(this).data("col");
-                        //var row = $(this).data("row");
-                        //var column = Number($("#column").val());
                         var row = firstFreeRow(col);
                         if (row == -1) {
                             alert('You cannot put more coin in this column!');
                         } else {
                             var id = "btn"+row+col;
                             var button = document.getElementById(id);
-{#                            button.style.cssText += 'background-color: ' + colour#}
                             if (checkForVictory(current_player, row, col)) {
                                 alert('You win!');
                                 status = "Concluded";
+                                winner = current_player;
                             }
+
+                            var message = {
+                                row: row,
+                                col: col,
+                                status: status,
+                                winner: winner
+                            }
+                            play_socket.send(JSON.stringify(message));
+
                             //alert('Posting coin move to server!');
                             $.post("/connect4/play/{{ game.id }}/", {row: row, column: col, status: status})
                                     .done(function (data) {
@@ -115,10 +115,27 @@
                     } else {
                         alert('Game already finished!');
                     }
-                })
-        });
-    </script>
+                });
 
+{#            Wire up a callback to fire when new data is received on the Websocket#}
+{#            play_socket.onmessage = function(coin) {#}
+{#                    var data = JSON.parse(coin.data);#}
+{#                    alert(data)#}
+{#                };#}
+{#            Send data over the Websocket #}
+{#            $('#board tr td button').click(function(e) {#}
+{#                var col = $(this).data("col");#}
+{#                var coin = {#}
+{#                    col: col,#}
+{#                    row: firstFreeRow(col)#}
+{#                };#}
+{#                play_socket.send(JSON.stringify(coin));#}
+{#                return false;#}
+{#            });#}
+        });
+
+{#        });#}
+    </script>
 {% endblock %}
 
 

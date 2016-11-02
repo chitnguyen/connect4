@@ -2,6 +2,7 @@
 
 
 {% block content %}
+    {#    Show welcome message if user is authenticated#}
     {% if request.user.is_authenticated %}
         <p class="bs-component">
             <center>
@@ -9,77 +10,77 @@
             </center>
         </p>
     {% endif %}
-        <center style="margin-top: 55px;">
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                <div class="panel-heading" style="font-weight: 700">Waiting For Another Player</div>
-                    {% for game in allMyCreatedGames %}
-                        <ul class="list-group">
-                            <li  class="list-group-item">
-                                <p> Created at {{ game.created_date }}</p>
-                            </li>
-                        </ul>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-info">
-                    <div class="panel-heading" style="font-weight: 700">Available To Join Now</div>
 
-                        {% for game in allOpenGames %}
-                            <ul class="list-group">
-                                <li  class="list-group-item">
-                                    <p style="color:green;">Join <b>{{ game.player1.username }}</b> now!</p>
-                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#join-game-modal">Join Now</button>
-                                    <!-- Modal Box -->
-                                    <div id="join-game-modal" class="modal fade" role="dialog">
-                                      <div class="modal-dialog">
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Join To Play Connect 4</h4>
-                                            </div>
-                                          <div class="modal-body">
-                                              <p>Do you want to join <b>{{ game.player1.username }}</b> to play Connect 4</p>
-                                          </div>
-                                          <div class="modal-footer">
-                                              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                              <a class="btn btn-primary" href="/connect4/play/{{game.id}}/" role="button">Yes</a>
-                                          </div>
+    <center style="margin-top: 55px;">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: 700">Waiting For Another Player</div>
+                {% for game in my_created_games %}
+                    <ul class="list-group">
+                        <li  class="list-group-item">
+                            <p> Created at {{ game.created_date }}</p>
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-info">
+                <div class="panel-heading" style="font-weight: 700">Available To Join Now</div>
+                    {% for game in open_games %}
+                        <ul class="list-group">
+                            <li  class="list-group-item">
+                                <p style="color:green;">Join <b>{{ game.player1.username }}</b> now!</p>
+                                <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#join-game-modal">Join Now</button>
+                                <!-- Modal Box -->
+                                <div id="join-game-modal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Join To Play Connect 4</h4>
                                         </div>
-                                      </div>
+                                        <div class="modal-body">
+                                            <p>Do you want to join <b>{{ game.player1.username }}</b> to play Connect 4?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a class="btn btn-primary" href="/connect4/play/{{game.id}}/" role="button">Yes</a>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                        </div>
                                     </div>
-                                </li>
-                            </ul>
-                        {% endfor %}
-                    </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-primary">
-                <div class="panel-heading" style="font-weight: 700">Playing Games</div>
-                    {% for game in allPlayingGames %}
-                        <ul class="list-group">
-                            <li  class="list-group-item">
-                                <a href = '/connect4/play/{{game.id}}/'>Created by <b>{{ game.player1.username }}</b></a>
+                                  </div>
+                                </div>
                             </li>
                         </ul>
                     {% endfor %}
-                </div>
             </div>
-            <div class="col-md-3">
-                <div class="panel panel-success">
-                <div class="panel-heading" style="font-weight: 700">Finished Games</div>
-                    {% for game in allConcludedGames %}
-                        <ul class="list-group">
-                            <li  class="list-group-item">
-                                <a href = '/connect4/play/{{game.id}}/'>Created by <b>{{ game.player1.username }}</b>. Winner is <b>{{ game.winner }}</b></a>
-                            </li>
-                        </ul>
-                    {% endfor %}
-                </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+            <div class="panel-heading" style="font-weight: 700">Playing Games</div>
+                {% for game in playing_games %}
+                    <ul class="list-group">
+                        <li  class="list-group-item">
+                            <a href = '/connect4/play/{{game.id}}/'>Created by <b>{{ game.player1.username }}</b></a>
+                        </li>
+                    </ul>
+                {% endfor %}
             </div>
-        </center>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-success">
+            <div class="panel-heading" style="font-weight: 700">Finished Games</div>
+                {% for game in concluded_games %}
+                    <ul class="list-group">
+                        <li  class="list-group-item">
+                            <a href = '/connect4/play/{{game.id}}/'>Created by <b>{{ game.player1.username }}</b>. Winner is <b>{{ game.winner }}</b></a>
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </center>
 {% endblock %}
 
 {% block javascript %}

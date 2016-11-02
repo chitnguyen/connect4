@@ -68,3 +68,6 @@ class Coin(models.Model):
         return ' '.join([
             self.player, 'to', self.row, self.column
         ])
+
+    def as_dict(self):
+        return {'row': self.row, 'column': self.column}
