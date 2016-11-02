@@ -49,7 +49,7 @@
                 last_move.style.cssText += 'border: 5px solid #2c3e50';
             {% endif %}
             prepareField();
-            updateCurrentField(players, rows, cols, first_player);
+            updateCurrentField(players, rows, cols, player1);
             play_socket.onmessage = function(message) {
                 var last_move = JSON.parse(message.data);
                 var row = last_move.row;
