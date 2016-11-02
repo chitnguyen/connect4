@@ -59,7 +59,7 @@
                 var status = last_move.status;
                 var winner = last_move.winner;
                 var last_move_player = last_move.current_player;
-                placeCoin(current_player, row, col, player1);
+                placeCoin(last_move_player, row, col, player1);
                 var id = "btn" + String(row) + String(col);
                 var last_button = document.getElementById(id);
                 last_button.style.cssText += 'border: 5px solid #2c3e50';
