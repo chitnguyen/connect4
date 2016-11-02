@@ -46,6 +46,7 @@
             {% if last_move %}
                 var last_move_row = {{ last_move.row }};
                 var last_move_col = {{ last_move.column }};
+                var last_move_player = {{ last_move.player.id }};
                 var id = "btn" + last_move_row + last_move_col;
                 var last_move = document.getElementById(id);
                 last_move.style.cssText += 'border: 5px solid #2c3e50';

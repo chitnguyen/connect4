@@ -64,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/connect4/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-11.185185">
-              <caret line="45" column="17" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="17" />
+              <caret line="61" column="10" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -83,11 +83,11 @@
       <file leaf-file-name="play.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/play.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0469043">
-              <caret line="44" column="35" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
+            <state vertical-scroll-proportion="-0.8442777">
+              <caret line="48" column="36" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="36" />
               <folding>
-                <element signature="e#3484#4190#0#HTML" expanded="false" />
-                <element signature="e#4215#4297#0#HTML" expanded="false" />
+                <element signature="e#3550#4256#0#HTML" expanded="false" />
+                <element signature="e#4281#4363#0#HTML" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -994,10 +994,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-38.333332">
+          <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
+          <folding>
+            <element signature="e#336#361#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/connect4/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.185185">
-          <caret line="45" column="17" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="17" />
+          <caret line="61" column="10" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1012,23 +1022,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.333332">
-          <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
-          <folding>
-            <element signature="e#336#361#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/play.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0469043">
-          <caret line="44" column="35" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
+        <state vertical-scroll-proportion="-0.8442777">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="36" />
           <folding>
-            <element signature="e#3484#4190#0#HTML" expanded="false" />
-            <element signature="e#4215#4297#0#HTML" expanded="false" />
+            <element signature="e#3550#4256#0#HTML" expanded="false" />
+            <element signature="e#4281#4363#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
