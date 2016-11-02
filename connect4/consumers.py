@@ -53,8 +53,6 @@ def ws_receive(message):
             game.save()
         # else:
         #     return HttpResponseBadRequest("Can not make 2 moves in a row")
-        if game.winner:
-            data['winner'] = game.winner
         # See above for the note about Group
         Group('game-'+game_id, channel_layer=message.channel_layer).send({'text': json.dumps(data)})
 
