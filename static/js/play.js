@@ -65,14 +65,19 @@ function prepareField() {
 function updateCurrentField(players, rows, cols, player1){
     var n = players.length;
     for(var i=0; i<n; i++) {
-        gameField[rows[i]][cols[i]] = players[i];
-        // Auto-assign player who created game (player1) with red and yellow for player2
-        var color = (players[i] == player1) ? 'red' : 'yellow';
-        var id = "btn"+rows[i].toString()+cols[i].toString();
-        var button = document.getElementById(id);
-        button.style.cssText += 'background-color: ' + color
+        placeCoin(players[i], rows[i], cols[i], player1)
     }
 }
+
+function placeCoin(player, row, col, player1) {
+    gameField[row][col] = player;
+    // Auto-assign player who created game (player1) with red and yellow for player2
+    var color = (player == player1) ? 'red' : 'yellow';
+    var id = "btn" + row.toString() + col.toString();
+    var button = document.getElementById(id);
+    button.style.cssText += 'background-color: ' + color
+}
+
 // Create a 6 rows x 7 columns board
 var table = document.createElement("table");
 table.setAttribute('id', 'board');
