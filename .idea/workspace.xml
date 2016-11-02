@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48484ad-c339-4b18-84f8-48affafb585c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/connect4/consumers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/reconnecting-websocket.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routing.py" afterPath="$PROJECT_DIR$/app/routing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/connect4/models.py" afterPath="$PROJECT_DIR$/connect4/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/connect4/views.py" afterPath="$PROJECT_DIR$/connect4/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/play.js" afterPath="$PROJECT_DIR$/static/js/play.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/game.html" afterPath="$PROJECT_DIR$/templates/game.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/play.html" afterPath="$PROJECT_DIR$/templates/play.html" />
     </list>
     <ignored path="connect4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="play.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="play.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/play.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.028142588">
+            <state vertical-scroll-proportion="-0.29411766">
               <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
               <folding />
             </state>
@@ -100,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/connect4/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.740741">
-              <caret line="130" column="24" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.4308797">
+              <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
               <folding>
                 <element signature="e#0#101#0" expanded="true" />
               </folding>
@@ -136,7 +126,6 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/app/settings.py" />
         <option value="$PROJECT_DIR$/templates/game.html" />
-        <option value="$PROJECT_DIR$/connect4/views.py" />
         <option value="$PROJECT_DIR$/static/js/reconnecting-websocket.min.js" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/connect4/__init__.py" />
@@ -145,6 +134,7 @@
         <option value="$PROJECT_DIR$/connect4/models.py" />
         <option value="$PROJECT_DIR$/connect4/consumers.py" />
         <option value="$PROJECT_DIR$/templates/play.html" />
+        <option value="$PROJECT_DIR$/connect4/views.py" />
       </list>
     </option>
   </component>
@@ -760,17 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0">
-          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-          <folding>
-            <element signature="e#1349#1407#0#HTML" expanded="false" />
-            <marker date="1478020323000" expanded="true" signature="126:367" placeholder="{% for field in form ... %}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Python/2.7/site-packages/dj_database_url.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5393836">
@@ -915,7 +894,7 @@
         <state vertical-scroll-proportion="0.10771993">
           <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -968,28 +947,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/connect4/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.740741">
-          <caret line="130" column="24" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#101#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="292" column="4" selection-start-line="292" selection-start-column="4" selection-end-line="292" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connect4/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.851852">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1034,9 +995,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/play.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.028142588">
+        <state vertical-scroll-proportion="-0.29411766">
           <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connect4/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.851852">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8839286">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connect4/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4308797">
+          <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#101#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
