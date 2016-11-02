@@ -57,7 +57,11 @@
                 var col = last_move.col;
                 var status = last_move.status;
                 var winner = last_move.winner;
-                placeCoin(current_player, row, col, player1)
+                placeCoin(current_player, row, col, player1);
+                var id = "btn" + String(row) + String(col);
+                var last_button = document.getElementById(id);
+                last_button.style.cssText += 'border: 5px solid #2c3e50';
+
                 if (winner != 'Draw'){
                     if(winner == current_player_name){
                         alert('You Win!');
