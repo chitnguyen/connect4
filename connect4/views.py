@@ -32,7 +32,7 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                return HttpResponseRedirect('/connect4/games/')
+                return redirect(games)
     else:
         form = AuthenticationForm()
 
@@ -49,7 +49,7 @@ def logout(request):
     :return:
     """
     auth.logout(request)
-    return HttpResponseRedirect('/connect4/login/')
+    return redirect(login)
 
 
 def signup(request):
