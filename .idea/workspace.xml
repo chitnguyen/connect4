@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48484ad-c339-4b18-84f8-48affafb585c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/play.html" afterPath="$PROJECT_DIR$/templates/play.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/connect4/views.py" afterPath="$PROJECT_DIR$/connect4/views.py" />
     </list>
     <ignored path="connect4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="play.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="play.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/play.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5778612">
+            <state vertical-scroll-proportion="-6.0392156">
               <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
               <folding />
             </state>
@@ -90,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/connect4/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-40.555557">
-              <caret line="94" column="46" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.51166964">
+              <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
               <folding>
                 <element signature="e#0#101#0" expanded="true" />
               </folding>
@@ -131,10 +131,10 @@
         <option value="$PROJECT_DIR$/connect4/__init__.py" />
         <option value="$PROJECT_DIR$/app/routing.py" />
         <option value="$PROJECT_DIR$/connect4/models.py" />
-        <option value="$PROJECT_DIR$/connect4/views.py" />
         <option value="$PROJECT_DIR$/connect4/consumers.py" />
         <option value="$PROJECT_DIR$/static/js/play.js" />
         <option value="$PROJECT_DIR$/templates/play.html" />
+        <option value="$PROJECT_DIR$/connect4/views.py" />
       </list>
     </option>
   </component>
@@ -1001,13 +1001,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/connect4/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/play.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-40.555557">
-          <caret line="94" column="46" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#101#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-6.0392156">
+          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1019,11 +1017,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/play.html">
+    <entry file="file://$PROJECT_DIR$/connect4/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5778612">
-          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
-          <folding />
+        <state vertical-scroll-proportion="0.51166964">
+          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#101#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
