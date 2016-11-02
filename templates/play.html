@@ -31,7 +31,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-        {#        Create a websocket#}
+            //Create a websocket
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
             var play_socket = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + window.location.pathname);
             var current_player = {{ request.user.id }};
@@ -42,7 +42,6 @@
             var rows = {{ rows }};
             var cols = {{ cols }};
             var status = $("#status").val();
-            var last_move_player = -1;
             {% if last_move %}
                 var last_move_row = {{ last_move.row }};
                 var last_move_col = {{ last_move.column }};
@@ -54,16 +53,16 @@
             prepareField();
             updateCurrentField(players, rows, cols, player1);
             play_socket.onmessage = function(message) {
-                var last_move = JSON.parse(message.data);
-                var row = last_move.row;
-                var col = last_move.col;
-                var status = last_move.status;
+{#                var last_move = JSON.parse(message.data);#}
+{#                var row = last_move.row;#}
+{#                var col = last_move.col;#}
+{#                var status = last_move.status;#}
                 var winner = last_move.winner;
-                var last_move_player = last_move.current_player;
-                placeCoin(last_move_player, row, col, player1);
-                var id = "btn" + String(row) + String(col);
-                var last_button = document.getElementById(id);
-                last_button.style.cssText += 'border: 5px solid #2c3e50';
+{#                var last_move_player = last_move.current_player;#}
+{#                placeCoin(last_move_player, row, col, player1);#}
+{#                var id = "btn" + String(row) + String(col);#}
+{#                var last_button = document.getElementById(id);#}
+{#                last_button.style.cssText += 'border: 5px solid #2c3e50';#}
 
                 if (winner != 'Draw'){
                     if(winner == current_player_name){
@@ -75,7 +74,7 @@
                     alert('Draw Game!')
                 };
 
-{#                window.location.reload(true);#}
+                window.location.reload(true);
             };
 
             function getCookie(name) {
@@ -123,15 +122,6 @@
                                         current_player: current_player
                                     };
                                     play_socket.send(JSON.stringify(message));
-
-                                    //alert('Posting coin move to server!');
-                                    {#                            $.post("/connect4/play/{{ game.id }}/", {row: row, column: col, status: status})#}
-                                    {#                                    .done(function (data) {#}
-                                    {#                                        window.location.reload(true);#}
-                                    {#                                    })#}
-                                    {#                                    .fail(function (xhr, status, error) {#}
-                                    {#                                        alert(xhr.responseText);#}
-                                    {#                                    });#}
                                 }
                             } else {
                                 alert('Game already finished!');
