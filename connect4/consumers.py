@@ -32,10 +32,12 @@ def ws_receive(message):
     except ValueError:
         return
     if data:
+        log.debug('chat message game=%s row=%s col=%s',
+                  game_id, data['row'], data['col'])
         # using game below to write message to db here
 
         # See above for the note about Group
-        Group('game-'+game_id, channel_layer=message.channel_layer).send({'text': data})
+        Group('game-'+game_id, channel_layer=message.channel_layer).send({'text': json.dumps(data)})
 
 
 @channel_session
