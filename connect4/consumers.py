@@ -33,7 +33,7 @@ def ws_receive(message):
     except ValueError:
         return
     if data:
-        log.debug('chat message game=%s row=%s col=%s',
+        log.debug('game=%s, coin placed at row=%s col=%s',
                   game_id, data['row'], data['col'])
         # using game below to write message to db here
         # if game.status == 'Concluded':
@@ -51,9 +51,12 @@ def ws_receive(message):
             game.status = 'Concluded'
             game.winner = current_player.username
             game.save()
+
         # else:
         #     return HttpResponseBadRequest("Can not make 2 moves in a row")
         # See above for the note about Group
+        if game.winner:
+            data['winner'] = game.winner
         Group('game-'+game_id, channel_layer=message.channel_layer).send({'text': json.dumps(data)})
 
 

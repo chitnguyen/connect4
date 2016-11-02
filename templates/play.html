@@ -55,25 +55,27 @@
             prepareField();
             updateCurrentField(players, rows, cols, player1);
             play_socket.onmessage = function(message) {
-{#                var last_move = JSON.parse(message.data);#}
+                var last_move = JSON.parse(message.data);
 {#                var row = last_move.row;#}
 {#                var col = last_move.col;#}
-{#                var status = last_move.status;#}
+                var status = last_move.status;
+                var winner = last_move.winner;
 {#                var last_move_player = last_move.current_player;#}
 {#                placeCoin(last_move_player, row, col, player1);#}
 {#                var id = "btn" + String(row) + String(col);#}
 {#                var last_button = document.getElementById(id);#}
 {#                last_button.style.cssText += 'border: 5px solid #2c3e50';#}
-
-                if (winner != 'Draw'){
-                    if(winner == current_player_name){
-                        alert('You Win!');
-                    } else if (winner != '') {
-                        alert('You lose!');
-                    }
-                } else {
-                    alert('Draw Game!')
-                };
+                if(status=='Concluded'){
+                    if (winner != 'Draw'){
+                        if(winner == current_player_name){
+                            alert('You Win!');
+                        } else if (winner != '') {
+                            alert('You lose!');
+                        }
+                    } else {
+                        alert('Draw Game!')
+                    };
+                }
 
                 window.location.reload(true);
             };
@@ -118,7 +120,8 @@
                                         row: row,
                                         col: col,
                                         status: status,
-                                        current_player: current_player
+                                        current_player: current_player,
+                                        winner: ''
                                     };
                                     play_socket.send(JSON.stringify(message));
                                 }
