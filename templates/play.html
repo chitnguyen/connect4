@@ -56,18 +56,18 @@
             updateCurrentField(players, rows, cols, player1);
             play_socket.onmessage = function(message) {
                 var last_move = JSON.parse(message.data);
-{#                var row = last_move.row;#}
-{#                var col = last_move.col;#}
-                var status = last_move.status;
-                var winner = last_move.winner;
-{#                var last_move_player = last_move.current_player;#}
-{#                placeCoin(last_move_player, row, col, player1);#}
-{#                var id = "btn" + String(row) + String(col);#}
-{#                var last_button = document.getElementById(id);#}
-{#                last_button.style.cssText += 'border: 5px solid #2c3e50';#}
-                if(status=='Concluded'){
-                    if (winner != 'Draw'){
-                        if(winner == current_player_name){
+                var last_move_row = last_move.row;
+                var last_move_col = last_move.col;
+                var last_move_status = last_move.status;
+                var last_move_winner = last_move.winner;
+                var last_move_player = last_move.current_player;
+                placeCoin(last_move_player, last_move_row, last_move_col, player1);
+                var id = "btn" + String(last_move_row) + String(last_move_col);
+                var last_button = document.getElementById(id);
+                last_button.style.cssText += 'border: 5px solid #2c3e50';
+                if(last_move_status=='Concluded'){
+                    if (last_move_winner != 'Draw'){
+                        if(last_move_winner == current_player_name){
                             alert('You Win!');
                         } else if (winner != '') {
                             alert('You lose!');
@@ -77,7 +77,7 @@
                     };
                 }
 
-                window.location.reload(true);
+                //window.location.reload(true);
             };
 
             function getCookie(name) {
@@ -102,20 +102,19 @@
             $("#board tr td button").click(function(e) {
                     e.preventDefault();
                     if (current_player == player1 || current_player == player2) {
-                        if (current_player == last_move_player){
-                            alert('Can not make 2 moves in a row!')
-                        } else {
-                            if (status != 'Concluded') {
+                        if (status != 'Concluded') {
+                            if (current_player == last_move_player){
+                                alert('Can not make 2 moves in a row!')
+                            } else {
                                 var col = $(this).data("col");
                                 var row = firstFreeRow(col);
                                 if (row == -1) {
                                     alert('You cannot put more coin in this column!');
                                 } else {
+                                    status = '';
                                     if (checkForVictory(current_player, row, col)) {
-                                        //alert('You win!');
                                         status = "Concluded";
                                     }
-
                                     var message = {
                                         row: row,
                                         col: col,
@@ -125,9 +124,9 @@
                                     };
                                     play_socket.send(JSON.stringify(message));
                                 }
-                            } else {
-                                alert('Game already finished!');
-                            };
+                            }
+                        } else {
+                            alert('Game already finished!');
                         }
                     }
             });
