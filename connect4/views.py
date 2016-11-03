@@ -30,8 +30,8 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                # return redirect(games)
-                return HttpResponseRedirect('/connect4/games/')
+                return HttpResponse('Successfully logged in, please go to ...')
+                # return HttpResponseRedirect('/connect4/games/')
     else:
         form = AuthenticationForm()
 
