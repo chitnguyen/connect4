@@ -2,6 +2,16 @@
  * Created by Chinguyen on 28/10/2016.
  */
 
+function removeBorder() {
+    for (var i = 0; i < 6; i++) {
+        for (var j = 0; j < 7; j++) {
+            var id = 'btn' + String(i) + String(j);
+            var last_button = document.getElementById(id);
+            last_button.style.cssText += 'border: none';
+        }
+    }
+}
+
 // With each move, we will check whether there is a winner
 function checkForVictory(player, row, col) {
     //  Update gameField with player id and check for 4 coins
