@@ -93,11 +93,11 @@
       <file leaf-file-name="play.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/play.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.89493436">
-              <caret line="143" column="50" selection-start-line="143" selection-start-column="50" selection-end-line="143" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.6697936">
+              <caret line="78" column="17" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
               <folding>
-                <element signature="e#3857#4563#0#HTML" expanded="false" />
-                <element signature="e#4588#4670#0#HTML" expanded="false" />
+                <element signature="e#3854#4560#0#HTML" expanded="false" />
+                <element signature="e#4585#4667#0#HTML" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1035,11 +1035,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/play.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.89493436">
-          <caret line="143" column="50" selection-start-line="143" selection-start-column="50" selection-end-line="143" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.6697936">
+          <caret line="78" column="17" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
           <folding>
-            <element signature="e#3857#4563#0#HTML" expanded="false" />
-            <element signature="e#4588#4670#0#HTML" expanded="false" />
+            <element signature="e#3854#4560#0#HTML" expanded="false" />
+            <element signature="e#4585#4667#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
