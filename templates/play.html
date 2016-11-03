@@ -123,6 +123,7 @@
                                         current_player: current_player,
                                         winner: ''
                                     };
+                                    last_button.style.cssText += 'border: none';
                                     play_socket.send(JSON.stringify(message));
                                 }
                             }
