@@ -30,8 +30,7 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                return HttpResponse('Successfully logged in, please go to ...')
-                # return HttpResponseRedirect('/connect4/games/')
+                return HttpResponseRedirect('/connect4/games/')
     else:
         form = AuthenticationForm()
 
@@ -71,7 +70,7 @@ def signup(request):
     return render_to_response('signup.html', args)
 
 
-@login_required(login_url='/connect4/login/')
+# @login_required(login_url='/connect4/login/')
 def games(request):
     """
     Write your view which controls the game set up and selection screen here
@@ -97,7 +96,7 @@ def games(request):
     return render(request, 'game.html', context)
 
 
-@login_required(login_url='/connect4/login/')
+# @login_required(login_url='/connect4/login/')
 def play(request, game_id):
     """
     write your view which controls the gameplay interaction w the web layer here
