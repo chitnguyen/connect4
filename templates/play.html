@@ -44,14 +44,14 @@
             var cols = {{ cols }};
             var status = $("#status").val();
             {% if last_move %}
-                last_move_row = {{ last_move.row }};
-                last_move_col = {{ last_move.column }};
-                last_move_player = {{ last_move.player.id }};
+                var last_move_row = {{ last_move.row }};
+                var last_move_col = {{ last_move.column }};
+                var last_move_player = {{ last_move.player.id }};
                 var id = "btn" + last_move_row + last_move_col;
-                last_move = document.getElementById(id);
-                last_move.style.cssText += 'border: 5px solid #2c3e50';
+                window.last_button = document.getElementById(id);
+                window.last_button.style.cssText += 'border: 5px solid #2c3e50';
             {% else %}
-                last_move_player = -1;
+                var last_move_player = -1;
             {% endif %}
             prepareField();
             updateCurrentField(players, rows, cols, player1);
@@ -64,8 +64,8 @@
                 last_move_player = last_move.current_player;
                 placeCoin(last_move_player, last_move_row, last_move_col, player1);
                 var id = "btn" + String(last_move_row) + String(last_move_col);
-                last_button = document.getElementById(id);
-                last_button.style.cssText += 'border: 5px solid #2c3e50';
+                window.last_button = document.getElementById(id);
+                window.last_button.style.cssText += 'border: 5px solid #2c3e50';
                 if(last_move_status=='Concluded'){
                     if (last_move_winner != 'Draw'){
                         if(last_move_winner == current_player_name){
@@ -123,7 +123,7 @@
                                         current_player: current_player,
                                         winner: ''
                                     };
-                                    last_button.style.cssText += 'border: none';
+                                    window.last_button.style.cssText += 'border: none';
                                     play_socket.send(JSON.stringify(message));
                                 }
                             }
