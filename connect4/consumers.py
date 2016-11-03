@@ -33,28 +33,25 @@ def ws_receive(message):
     except ValueError:
         return
     if data:
-        log.debug('game=%s, coin placed at row=%s col=%s',
-                  game_id, data['row'], data['col'])
-        # using game below to write message to db here
-        # if game.status == 'Concluded':
-        #     return HttpResponseBadRequest('Game already finished!')
-        # elif game.status == 'Playing' and request.user.id not in [game.player1_id, game.player2_id]:
-        #     return HttpResponseBadRequest("Only current players are allowed to make the move")
-        # elif not game.coin_set.all() or game.last_move.player != request.user:
-        #     status = request.POST.get('status', 'Open')
         row = data['row']
         col = data['col']
         status = data['status']
         current_player = User.objects.get(id=data['current_player'])
-        game.make_move(current_player, row, col)
-        if status == 'Concluded':
-            game.status = 'Concluded'
-            game.winner = current_player.username
-            game.save()
+        log.debug('game=%s, coin placed at row=%s col=%s',
+                  game_id, data['row'], data['col'])
+        if game.status == 'Concluded':
+            raise ValueError('Game already finished!')
+        elif game.status == 'Playing' and current_player.id not in [game.player1_id, game.player2_id]:
+            raise ValueError("Only current players are allowed to make the move")
+        elif not game.coin_set.all() or game.last_move.player != current_player:
+            game.make_move(current_player, row, col)
+            if status == 'Concluded':
+                game.status = 'Concluded'
+                game.winner = current_player.username
+                game.save()
 
-        # else:
-        #     return HttpResponseBadRequest("Can not make 2 moves in a row")
-        # See above for the note about Group
+        else:
+            raise ValueError("Can not make 2 moves in a row")
         if game.winner:
             data['winner'] = game.winner
         Group('game-'+game_id, channel_layer=message.channel_layer).send({'text': json.dumps(data)})

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48484ad-c339-4b18-84f8-48affafb585c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/play.js" afterPath="$PROJECT_DIR$/static/js/play.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/play.html" afterPath="$PROJECT_DIR$/templates/play.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/connect4/consumers.py" afterPath="$PROJECT_DIR$/connect4/consumers.py" />
     </list>
     <ignored path="connect4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="consumers.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="consumers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/connect4/consumers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.203704">
-              <caret line="58" column="24" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.745283">
+              <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -64,7 +63,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/connect4/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.222221">
+            <state vertical-scroll-proportion="-6.740741">
               <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
               <folding />
             </state>
@@ -91,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="play.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="play.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/play.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6622889">
-              <caret line="65" column="31" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
+            <state vertical-scroll-proportion="-18.09804">
+              <caret line="117" column="61" selection-start-line="117" selection-start-column="61" selection-end-line="117" selection-end-column="61" />
               <folding>
                 <element signature="e#3886#4592#0#HTML" expanded="false" />
                 <element signature="e#4617#4699#0#HTML" expanded="false" />
@@ -152,11 +151,11 @@
         <option value="$PROJECT_DIR$/app/routing.py" />
         <option value="$PROJECT_DIR$/connect4/models.py" />
         <option value="$PROJECT_DIR$/connect4/views.py" />
-        <option value="$PROJECT_DIR$/connect4/consumers.py" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/signup.html" />
         <option value="$PROJECT_DIR$/static/js/play.js" />
         <option value="$PROJECT_DIR$/templates/play.html" />
+        <option value="$PROJECT_DIR$/connect4/consumers.py" />
       </list>
     </option>
   </component>
@@ -980,6 +979,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/play.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2222223">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connect4/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2222223">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/game.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.75">
@@ -990,9 +1005,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/play.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.09804">
+          <caret line="117" column="61" selection-start-line="117" selection-start-column="61" selection-end-line="117" selection-end-column="61" />
+          <folding>
+            <element signature="e#3886#4592#0#HTML" expanded="false" />
+            <element signature="e#4617#4699#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/connect4/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.222221">
+        <state vertical-scroll-proportion="-6.740741">
           <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
           <folding />
         </state>
@@ -1010,37 +1036,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/connect4/consumers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.203704">
-          <caret line="58" column="24" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.745283">
+          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connect4/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2222223">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/play.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2222223">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/play.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6622889">
-          <caret line="65" column="31" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
-          <folding>
-            <element signature="e#3886#4592#0#HTML" expanded="false" />
-            <element signature="e#4617#4699#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
