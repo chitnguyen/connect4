@@ -71,7 +71,7 @@ def signup(request):
     return render_to_response('signup.html', args)
 
 
-@login_required
+# @login_required
 def games(request):
     """
     Write your view which controls the game set up and selection screen here
@@ -98,7 +98,7 @@ def games(request):
     return render(request, 'game.html', context)
 
 
-@login_required
+# @login_required
 def play(request, game_id):
     """
     write your view which controls the gameplay interaction w the web layer here
