@@ -66,5 +66,3 @@ Don't suffer in silence, if you have questions or are genuinely stuck, give us a
 ## Questions
 Any questions, please email <hello@yobota.xyz>
 
-# connect4
-# connect4
