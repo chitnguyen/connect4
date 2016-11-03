@@ -78,7 +78,6 @@ def games(request):
     :param request:
     :return:
     """
-    Game.objects.all().delete()
     # creating game
     if request.method == 'POST':
         player1 = request.user
