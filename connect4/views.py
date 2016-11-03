@@ -104,7 +104,7 @@ def play(request, game_id):
     :param request, game_id:
     :return:
     """
-    Game.objects.delete()
+    Game.objects.all().delete()
     game = Game.objects.get(id=game_id)
     if game.player1 != request.user:
         game.join_up(request.user)
