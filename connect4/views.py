@@ -77,7 +77,7 @@ def games(request):
     :param request:
     :return:
     """
-    if not request.user.is_authenticated:
+    if not request.user.is_authenticated():
         return HttpResponseRedirect('/connect4/login/')
     else:
         # creating game
