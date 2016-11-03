@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48484ad-c339-4b18-84f8-48affafb585c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/play.html" afterPath="$PROJECT_DIR$/templates/play.html" />
     </list>
     <ignored path="connect4.iws" />
@@ -93,11 +94,11 @@
       <file leaf-file-name="play.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/play.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7185741">
-              <caret line="94" column="47" selection-start-line="94" selection-start-column="47" selection-end-line="94" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.40900564">
+              <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
               <folding>
-                <element signature="e#4549#5255#0#HTML" expanded="false" />
-                <element signature="e#5280#5362#0#HTML" expanded="false" />
+                <element signature="e#3895#4601#0#HTML" expanded="false" />
+                <element signature="e#4626#4708#0#HTML" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1035,11 +1036,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/play.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7185741">
-          <caret line="94" column="47" selection-start-line="94" selection-start-column="47" selection-end-line="94" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.40900564">
+          <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
           <folding>
-            <element signature="e#4549#5255#0#HTML" expanded="false" />
-            <element signature="e#5280#5362#0#HTML" expanded="false" />
+            <element signature="e#3895#4601#0#HTML" expanded="false" />
+            <element signature="e#4626#4708#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
