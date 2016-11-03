@@ -77,23 +77,26 @@ def games(request):
     :param request:
     :return:
     """
-    # creating game
-    if request.method == 'POST':
-        player1 = request.user
-        game = Game(player1=player1)
-        game.save()
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/connect4/login/')
+    else:
+        # creating game
+        if request.method == 'POST':
+            player1 = request.user
+            game = Game(player1=player1)
+            game.save()
 
-    my_created_games = Game.objects.all().filter(status='Open', player1=request.user)
-    open_games = Game.objects.all().filter(status='Open').exclude(player1=request.user)
-    playing_games = Game.objects.all().filter(Q(status='Playing'),
-                                              Q(player1=request.user) | Q(player2=request.user))
-    concluded_games = Game.objects.all().filter(Q(status='Concluded'),
-                                                Q(player1=request.user) | Q(player2=request.user))
-    context = {'my_created_games': my_created_games,
-               'open_games': open_games,
-               'playing_games': playing_games,
-               'concluded_games': concluded_games}
-    return render(request, 'game.html', context)
+        my_created_games = Game.objects.all().filter(status='Open', player1=request.user)
+        open_games = Game.objects.all().filter(status='Open').exclude(player1=request.user)
+        playing_games = Game.objects.all().filter(Q(status='Playing'),
+                                                  Q(player1=request.user) | Q(player2=request.user))
+        concluded_games = Game.objects.all().filter(Q(status='Concluded'),
+                                                    Q(player1=request.user) | Q(player2=request.user))
+        context = {'my_created_games': my_created_games,
+                   'open_games': open_games,
+                   'playing_games': playing_games,
+                   'concluded_games': concluded_games}
+        return render(request, 'game.html', context)
 
 
 # @login_required(login_url='/connect4/login/')
