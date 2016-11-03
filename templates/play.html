@@ -63,7 +63,7 @@
                 var last_move_winner = last_move.winner;
                 last_move_player = last_move.current_player;
                 placeCoin(last_move_player, last_move_row, last_move_col, player1);
-                last_btn_id = "btn" + String(last_move_row) + String(last_move_col);
+                window.last_btn_id = "btn" + String(last_move_row) + String(last_move_col);
                 var last_button = document.getElementById(last_btn_id);
                 last_button.style.cssText += 'border: 5px solid #2c3e50';
                 if(last_move_status=='Concluded'){
@@ -123,7 +123,7 @@
                                         current_player: current_player,
                                         winner: ''
                                     };
-                                    var last_button = document.getElementById(last_btn_id)
+                                    var last_button = document.getElementById(window.last_btn_id)
                                     last_button.style.cssText += 'border: none';
                                     play_socket.send(JSON.stringify(message));
                                 }
